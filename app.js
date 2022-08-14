@@ -12,9 +12,9 @@ const app = express();
 // Connect Database
 connectDB();
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(__dirname+'/../client/build'));
+    app.use(express.static(__dirname+'/my-app/public'));
     app.get('*', (req, res) => {
-        res.sendFile(__dirname+'/../client/build/index.html')
+        res.sendFile(__dirname+'/my-app/public/index.html')
     });
 }
 else{
