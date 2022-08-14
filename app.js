@@ -14,7 +14,7 @@ connectDB();
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static(__dirname+'/my-app/build'));
     app.get('*', (req, res) => {
-        res.sendFile(__dirname+'/my-app/build/CreateBook.js')
+        res.sendFile(__dirname+'/my-app/build/index.html')
     });
 }
 else{

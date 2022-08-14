@@ -4,9 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare-backend": "npm install",
+    "prepare-react": "cd my-app && npm install",
+    "build-react": "cd my-app && npm run build",
+    "test-react": "cd my-app && npm test",
     "start": "node app.js",
     "app": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "npm run prepare-react && npm run build-react"
   },
   "repository": {
     "type": "git",
