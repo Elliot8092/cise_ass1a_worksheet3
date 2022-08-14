@@ -11,6 +11,15 @@ const app = express();
 
 // Connect Database
 connectDB();
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(__dirname+'/../client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(__dirname+'/../client/build/index.html')
+    });
+}
+else{
+    app.get('/', (req, res) => res.send('Hello world!'));
+}
 
 // cors
 app.use(cors({ origin: true, credentials: true }));
@@ -18,7 +27,7 @@ app.use(cors({ origin: true, credentials: true }));
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.send('Hello world!'));
+//app.get('/', (req, res) => res.send('Hello world!'));
 
 // use Routes
 app.use('/api/books', books);
